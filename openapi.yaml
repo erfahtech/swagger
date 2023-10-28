@@ -37,7 +37,7 @@ paths:
         - signup
       summary: SingUp Data User
       description: Signup Data User
-      operationId: postUserJSON
+      operationId: authService
       requestBody:
         content:
           application/json:
