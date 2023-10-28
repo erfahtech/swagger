@@ -5,51 +5,51 @@ info:
     Jelaskan disini apa saja yang perlu dijelaskan
     termasuk informasi yang diperlukan untuk dinilai
     term of service isi dari link repo dari swagger ini
-  termsOfService: https://github.com/intern-monitoring/swagger
+  termsOfService: https://github.com/erfahtech/swagger
   contact:
-    email: dimasardnt6@gmail.com
+    url: https://eio.my.id
   license:
-    name: Erfahtech Package
-    url: https://pkg.go.dev/github.com/intern-monitoring/backend-intermoni
+    name: UrSmartEcosystem Package
+    url: https://pkg.go.dev/github.com/erfahtech/be_erfahtech
   version: 1.0.11
 externalDocs:
-  description: Repo GCF
-  url: https://intern-monitoring.github.io/gcf/
+  description: Repository GCF
+  url: https://github.com/erfahtech/gcf/
 servers:
-  - url: https://asia-southeast2-bursakerja-project.cloudfunctions.net
+  - url: https://asia-southeast2-urse-project.cloudfunctions.net/
 tags:
   - name: data
     description: Data User
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://intern-monitoring.github.io/gcf/getAllUser/
+      url: https://erfahtech.github.io/gcf/getAllUser/
   - name: login
     description: Auth to Access to API
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://intern-monitoring.github.io/gcf/login/
+      url: https://erfahtech.github.io/gcf/login/
   - name: user
     description: Get Token and Authorize
 paths:
-  /intermoni-user:
-    get:
-      tags:
-        - data
-      summary: Get Data User
-      description: List Data User
-      operationId: getUserJSON
-      responses:
-        "200":
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/User"
-        "400":
-          description: Invalid status value
-  /intermoni-login:
+  # /intermoni-user:
+  #   get:
+  #     tags:
+  #       - data
+  #     summary: Get Data User
+  #     description: List Data User
+  #     operationId: getUserJSON
+  #     responses:
+  #       "200":
+  #         description: successful operation
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: array
+  #               items:
+  #                 $ref: "#/components/schemas/User"
+  #       "400":
+  #         description: Invalid status value
+  /post-login:
     post:
       tags:
         - login
@@ -77,28 +77,28 @@ paths:
 components:
   schemas:
     User:
-      type: object
-      properties:
-        type:
-          type: string
-        geometry:
-          type: object
-          properties:
-            type:
-              type: string
-            coordinates:
-              type: array
-        properties:
-          type: object
-          properties:
-            name:
-              type: string
+      # type: object
+      # properties:
+      #   type:
+      #     type: string
+      #   geometry:
+      #     type: object
+      #     properties:
+      #       type:
+      #         type: string
+      #       coordinates:
+      #         type: array
+      #   properties:
+      #     type: object
+      #     properties:
+      #       name:
+      #         type: string
     Login:
       type: object
       properties:
         email:
           type: string
-          example: yourmail@gmail.com
+          example: erfahtech@gmail.com
         password:
           type: string
           example: secret
