@@ -18,11 +18,11 @@ externalDocs:
 servers:
   - url: https://asia-southeast2-urse-project.cloudfunctions.net/
 tags:
-  - name: data
-    description: Data User
+  - name: signup
+    description: Signup User
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://erfahtech.github.io/gcf/getAllUser/
+      url: https://erfahtech.github.io/gcf/signup/
   - name: login
     description: Auth to Access to API
     externalDocs:
@@ -31,24 +31,28 @@ tags:
   - name: user
     description: Get Token and Authorize
 paths:
-  # /intermoni-user:
-  #   get:
-  #     tags:
-  #       - data
-  #     summary: Get Data User
-  #     description: List Data User
-  #     operationId: getUserJSON
-  #     responses:
-  #       "200":
-  #         description: successful operation
-  #         content:
-  #           application/json:
-  #             schema:
-  #               type: array
-  #               items:
-  #                 $ref: "#/components/schemas/User"
-  #       "400":
-  #         description: Invalid status value
+  /post-signUp:
+    post:
+      tags:
+        - signup
+      summary: SingUp Data User
+      description: Signup Data User
+      operationId: postUserJSON
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Signup"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/SignupResponse"
+        "405":
+          description: Invalid input
   /post-login:
     post:
       tags:
@@ -76,29 +80,24 @@ paths:
             - read:apiKey
 components:
   schemas:
-    User:
-      # type: object
-      # properties:
-      #   type:
-      #     type: string
-      #   geometry:
-      #     type: object
-      #     properties:
-      #       type:
-      #         type: string
-      #       coordinates:
-      #         type: array
-      #   properties:
-      #     type: object
-      #     properties:
-      #       name:
-      #         type: string
+    Signup:
+      type: object
+      properties:
+        email:
+          type: string
+          example: email@gmail.com
+        username:
+          type: string
+          example: erfah
+        password:
+          type: string
+          example: secret
     Login:
       type: object
       properties:
         email:
           type: string
-          example: erfahtech@gmail.com
+          example: erfah@gmail.com
         password:
           type: string
           example: secret
@@ -114,6 +113,15 @@ components:
         token:
           type: string
           example: fehguy
+    SignupResponse:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: true
+        message:
+          type: string
+          example: "Akun berhasil dibuat untuk username: erfah"
   requestBodies:
     AuthReq:
       description: Request Authentication
