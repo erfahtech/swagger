@@ -123,12 +123,12 @@ components:
     Signup:
       type: object
       properties:
-        email:
-          type: string
-          example: email@gmail.com
         username:
           type: string
           example: erfah
+        email:
+          type: string
+          example: email@gmail.com
         password:
           type: string
           example: secret
