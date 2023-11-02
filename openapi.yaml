@@ -31,7 +31,7 @@ tags:
   - name: user
     description: Get Token and Authorize
 paths:
-  /post-signUp:
+  /urse-signup:
     post:
       tags:
         - signup
@@ -53,7 +53,7 @@ paths:
                   $ref: "#/components/schemas/SignupResponse"
         "405":
           description: Invalid input
-  /post-login:
+  /urse-login:
     post:
       tags:
         - login
@@ -78,6 +78,7 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
+        # - Bearer: []
 components:
   schemas:
     Signup:
@@ -101,6 +102,15 @@ components:
         password:
           type: string
           example: secret
+    SignupResponse:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: true
+        message:
+          type: string
+          example: "Akun berhasil dibuat untuk username: erfah"
     AuthResponse:
       type: object
       properties:
@@ -113,15 +123,6 @@ components:
         token:
           type: string
           example: fehguy
-    SignupResponse:
-      type: object
-      properties:
-        status:
-          type: bool
-          example: true
-        message:
-          type: string
-          example: "Akun berhasil dibuat untuk username: erfah"
   requestBodies:
     AuthReq:
       description: Request Authentication
@@ -142,3 +143,9 @@ components:
       type: apiKey
       name: token
       in: header
+    # Bearer:
+    #   type: apiKey
+    #   name: Authorization
+    #   in: header
+    #   description: >-
+    #     Masukan token dengan `Bearer: ` contoh "Bearer abcde12345".
