@@ -100,6 +100,24 @@ paths:
           description: Invalid input
       security:
         - Bearer: []
+  /urse-getdevices:
+    get:
+      tags:
+        - user
+      summary: Get Device User
+      description: Mendapatkan Device User
+      operationId: authService
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetResponseDevice"
+        "405":
+          description: Invalid input
+      security:
+        - Bearer: []
 components:
   schemas:
     Signup:
@@ -123,15 +141,6 @@ components:
         password:
           type: string
           example: secret
-    insertDevices:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Lampu
-        topic:
-          type: string
-          example: kamar/lampu
     SignupResponse:
       type: object
       properties:
@@ -153,6 +162,15 @@ components:
         message:
           type: string
           example: Selamat Datang
+    insertDevices:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Lampu
+        topic:
+          type: string
+          example: kamar/lampu
     InsertResponseDevice:
       type: object
       properties:
@@ -162,6 +180,18 @@ components:
         message:
           type: string
           example: "Device berhasil ditambahkan dengan nama: "
+    GetResponseDevice:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: true
+        message:
+          type: string
+          example: "Device data successfully retrieved"
+        data:
+          type: list
+          example: [{ "id": "123456", "name": "Lampu", "topic": "kamar/lampu" }, { "id": "123456", "name": "Kipas", "topic": "kamar/kipas" }]
   requestBodies:
     AuthReq:
       description: Request Authentication
