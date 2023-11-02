@@ -105,7 +105,7 @@ paths:
       tags:
         - user
       summary: Get Device User
-      description: Mendapatkan Device User
+      description: Mendapatkan Device Berdasarkan User Login
       operationId: authService
       responses:
         "200":
