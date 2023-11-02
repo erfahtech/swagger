@@ -77,6 +77,29 @@ paths:
             - write:apiKey
             - read:apiKey
         # - Bearer: []
+  /urse-insertdevices:
+    post:
+      tags:
+        - user
+      summary: Insert Device User
+      description: Menambah Device User
+      operationId: authService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/insertDevices"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InsertResponseDevice"
+        "405":
+          description: Invalid input
+      security:
+        - Bearer: []
 components:
   schemas:
     Signup:
@@ -100,6 +123,15 @@ components:
         password:
           type: string
           example: secret
+    insertDevices:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Lampu
+        topic:
+          type: string
+          example: kamar/lampu
     SignupResponse:
       type: object
       properties:
@@ -114,13 +146,22 @@ components:
       properties:
         status:
           type: bool
-          example: false
-        message:
-          type: string
-          example: fehguy
+          example: true
         token:
           type: string
-          example: fehguy
+          example: tokencuy
+        message:
+          type: string
+          example: Selamat Datang
+    InsertResponseDevice:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: true
+        message:
+          type: string
+          example: "Device berhasil ditambahkan dengan nama: "
   requestBodies:
     AuthReq:
       description: Request Authentication
