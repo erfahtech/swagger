@@ -125,7 +125,7 @@ paths:
       summary: Update Device User
       parameters:
         - in: query
-          name: userId
+          name: deviceId
           type: string
           required: true
           description: Masukan Id Device.
@@ -149,7 +149,7 @@ paths:
       summary: Delete Device User
       parameters:
         - in: query
-          name: userId
+          name: deviceId
           type: string
           required: true
           description: Masukan Id Device.
