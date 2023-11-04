@@ -125,12 +125,17 @@ paths:
       summary: Update Device User
       parameters:
         - in: query
-          name: deviceId
+          name: id
           type: string
           required: true
           description: Masukan Id Device.
       description: Memperbaharui Device Berdasarkan User Login
       operationId: authService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/insertDevices"
       responses:
         "200":
           description: successful operation
@@ -149,7 +154,7 @@ paths:
       summary: Delete Device User
       parameters:
         - in: query
-          name: deviceId
+          name: id
           type: string
           required: true
           description: Masukan Id Device.
