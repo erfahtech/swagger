@@ -118,6 +118,54 @@ paths:
           description: Invalid input
       security:
         - Bearer: []
+  /urse-updatedevice:
+    put:
+      tags:
+        - user
+      summary: Update Device User
+      parameters:
+        - in: query
+          name: userId
+          type: string
+          required: true
+          description: Masukan Id Device.
+      description: Memperbaharui Device Berdasarkan User Login
+      operationId: authService
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "405":
+          description: Invalid input
+      security:
+        - Bearer: []
+  /urse-deletedevice:
+    delete:
+      tags:
+        - user
+      summary: Delete Device User
+      parameters:
+        - in: query
+          name: userId
+          type: string
+          required: true
+          description: Masukan Id Device.
+      description: Menghapus Device Berdasarkan User Login
+      operationId: authService
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "405":
+          description: Invalid input
+      security:
+        - Bearer: []
 components:
   schemas:
     Signup:
@@ -140,8 +188,7 @@ components:
           example: erfah@gmail.com
         password:
           type: string
-          example: secret
-    SignupResponse:
+    SuccessResponse:
       type: object
       properties:
         status:
@@ -149,7 +196,7 @@ components:
           example: true
         message:
           type: string
-          example: "Akun berhasil dibuat untuk username: erfah"
+          example: pesan berhasil
     AuthResponse:
       type: object
       properties:
