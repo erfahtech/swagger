@@ -177,7 +177,7 @@ paths:
     post:
       tags:
         - Log History
-      summary: Insert History User
+      summary: Insert History Log
       description: Menambah Device User
       operationId: authService
       requestBody:
@@ -192,6 +192,24 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InsertResponseHistory"
+        "405":
+          description: Invalid input
+      security:
+        - Bearer: []
+  /urse-gethistory:
+    get:
+      tags:
+        - Log History
+      summary: Get History Log
+      description: Mendapatkan History Berdasarkan User Login
+      operationId: authService
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetResponseHistory"
         "405":
           description: Invalid input
       security:
