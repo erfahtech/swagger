@@ -308,6 +308,22 @@ components:
         data:
           type: list
           example: [{ "id": "123456", "name": "Lampu", "topic": "kamar/lampu" }, { "id": "123456", "name": "Kipas", "topic": "kamar/kipas" }]
+    GetResponseHistory:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: true
+        message:
+          type: string
+          example: "Device data successfully retrieved"
+        data:
+          type: list
+          example:
+            [
+              { "id": "123456", "name": "Lampu", "topic": "kamar/lampu", "user": "user@gmail.com", "created_at": "2023-11-18T06:41:31Z" },
+              { "id": "123456", "name": "Kipas", "topic": "kamar/kipas", "user": "userr@gmail.com", "created_at": "2023-11-18T06:41:31Z" },
+            ]
   requestBodies:
     AuthReq:
       description: Request Authentication
