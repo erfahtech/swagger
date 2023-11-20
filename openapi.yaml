@@ -28,6 +28,8 @@ tags:
       url: https://erfahtech.github.io/gcf/login/
   - name: user
     description: Get Token and Authorize
+  - name: Log History
+    description: Get Token and Authorize
 paths:
   /urse-signup:
     post:
@@ -167,6 +169,29 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/SuccessResponse"
+        "405":
+          description: Invalid input
+      security:
+        - Bearer: []
+  /urse-inserthistory:
+    post:
+      tags:
+        - Log History
+      summary: Insert History User
+      description: Menambah Device User
+      operationId: authService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/insertDevices"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InsertResponseDevice"
         "405":
           description: Invalid input
       security:
