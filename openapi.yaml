@@ -214,6 +214,24 @@ paths:
           description: Invalid input
       security:
         - Bearer: []
+  /urse-deletehistory:
+    delete:
+      tags:
+        - Log History
+      summary: Delete Hisory Log
+      description: Menghapus Device Berdasarkan User Login
+      operationId: authService
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "405":
+          description: Invalid input
+      security:
+        - Bearer: []
 components:
   schemas:
     Signup:
@@ -295,7 +313,7 @@ components:
           example: true
         message:
           type: string
-          example: "History berhasil ditambahkan dengan nama: "
+          example: "History berhasil ditambahkan dengan nama: dan payload: "
     GetResponseDevice:
       type: object
       properties:
