@@ -177,7 +177,7 @@ paths:
     post:
       tags:
         - Log History
-      summary: Insert History Log
+      summary: Insert Log History
       description: Menambah Device User
       operationId: authService
       requestBody:
@@ -200,7 +200,7 @@ paths:
     get:
       tags:
         - Log History
-      summary: Get History Log
+      summary: Get Log History
       description: Mendapatkan History Berdasarkan User Login
       operationId: authService
       responses:
@@ -218,8 +218,8 @@ paths:
     delete:
       tags:
         - Log History
-      summary: Delete Hisory Log
-      description: Menghapus Device Berdasarkan User Login
+      summary: Delete Log Hisory
+      description: Menghapus Semua History Berdasarkan User Login
       operationId: authService
       responses:
         "200":
