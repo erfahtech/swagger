@@ -184,14 +184,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/insertDevices"
+              $ref: "#/components/schemas/insertHistory"
       responses:
         "200":
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InsertResponseDevice"
+                $ref: "#/components/schemas/InsertResponseHistory"
         "405":
           description: Invalid input
       security:
@@ -248,6 +248,18 @@ components:
         topic:
           type: string
           example: kamar/lampu
+    insertHistory:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Lampu
+        topic:
+          type: string
+          example: kamar/lampu
+        payload:
+          type: string
+          example: Menyala
     InsertResponseDevice:
       type: object
       properties:
@@ -257,6 +269,15 @@ components:
         message:
           type: string
           example: "Device berhasil ditambahkan dengan nama: "
+    InsertResponseHistory:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: true
+        message:
+          type: string
+          example: "History berhasil ditambahkan dengan nama: "
     GetResponseDevice:
       type: object
       properties:
