@@ -16,17 +16,12 @@ externalDocs:
 servers:
   - url: https://asia-southeast2-urse-project.cloudfunctions.net/
 tags:
-  - name: signup
-    description: Signup User
-    externalDocs:
-      description: Deskripsi dan Kode Program
-      url: https://erfahtech.github.io/gcf/signup/
-  - name: login
+  - name: Auth
     description: Auth to Access to API
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://erfahtech.github.io/gcf/login/
-  - name: user
+  - name: User
     description: Get Token and Authorize
   - name: Log History
     description: Get Token and Authorize
@@ -34,7 +29,7 @@ paths:
   /urse-signup:
     post:
       tags:
-        - signup
+        - Auth
       summary: SingUp Data User
       description: Signup Data User
       operationId: authService
@@ -50,13 +45,13 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: "#/components/schemas/SignupResponse"
+                  $ref: "#/components/schemas/SuccessResponse"
         "405":
           description: Invalid input
   /urse-login:
     post:
       tags:
-        - login
+        - Auth
       summary: Login get Token
       description: Login and Get User Token
       operationId: authService
@@ -79,10 +74,76 @@ paths:
             - write:apiKey
             - read:apiKey
         # - Bearer: []
+  /urse-sendotp:
+    post:
+      tags:
+        - Auth
+      summary: Send OTP
+      description: Send OTP to Email for Reset Password
+      operationId: authService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SendOTP"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/SuccessResponse"
+        "405":
+          description: Invalid input
+  /urse-verifyotp:
+    post:
+      tags:
+        - Auth
+      summary: Verify OTP
+      description: Verify OTP to Email for Reset Password
+      operationId: authService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VerifyOTP"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/SuccessResponse"
+        "405":
+          description: Invalid input
+  /urse-resetpassword:
+    post:
+      tags:
+        - Auth
+      summary: Reset Password
+      description: Reset Password After Verify OTP
+      operationId: authService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ResetPassword"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/SuccessResponse"
+        "405":
+          description: Invalid input
   /urse-getprofile:
     get:
       tags:
-        - user
+        - User
       summary: Get Profile User
       description: Mendapatkan Profile Berdasarkan User Login
       operationId: authService
@@ -100,7 +161,7 @@ paths:
   /urse-insertdevices:
     post:
       tags:
-        - user
+        - User
       summary: Insert Device User
       description: Menambah Device User
       operationId: authService
@@ -123,7 +184,7 @@ paths:
   /urse-getdevices:
     get:
       tags:
-        - user
+        - User
       summary: Get Device User
       description: Mendapatkan Device Berdasarkan User Login
       operationId: authService
@@ -141,7 +202,7 @@ paths:
   /urse-updatedevice:
     put:
       tags:
-        - user
+        - User
       summary: Update Device User
       parameters:
         - in: query
@@ -170,7 +231,7 @@ paths:
   /urse-deletedevice:
     delete:
       tags:
-        - user
+        - User
       summary: Delete Device User
       parameters:
         - in: query
@@ -264,6 +325,9 @@ components:
         password:
           type: string
           example: secret
+        phonenumber:
+          type: string
+          example: 628123456789
     Login:
       type: object
       properties:
@@ -272,27 +336,33 @@ components:
           example: erfah@gmail.com
         password:
           type: string
-    SuccessResponse:
+    SendOTP:
       type: object
       properties:
-        status:
-          type: bool
-          example: true
-        message:
+        email:
           type: string
-          example: pesan berhasil
-    AuthResponse:
+          example: erfah@gmail.com
+    VerifyOTP:
       type: object
       properties:
-        status:
-          type: bool
-          example: true
-        token:
+        otp:
           type: string
-          example: tokencuy
-        message:
+          example: 123456
+        email:
           type: string
-          example: Selamat Datang
+          example: erfah@gmail.com
+    ResetPassword:
+      type: object
+      properties:
+        otp:
+          type: string
+          example: 123456
+        email:
+          type: string
+          example: erfah@gmail.com
+        password:
+          type: string
+          example: secret12345678
     insertDevices:
       type: object
       properties:
@@ -314,6 +384,27 @@ components:
         payload:
           type: string
           example: Menyala
+    SuccessResponse:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: true
+        message:
+          type: string
+          example: pesan berhasil
+    AuthResponse:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: true
+        token:
+          type: string
+          example: tokencuy
+        message:
+          type: string
+          example: Selamat Datang
     InsertResponseDevice:
       type: object
       properties:
