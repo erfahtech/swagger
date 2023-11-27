@@ -17,14 +17,14 @@ servers:
   - url: https://asia-southeast2-urse-project.cloudfunctions.net/
 tags:
   - name: Auth
-    description: Login, Register, and Reset Password
+    description: Login, SignUp, and Reset Password
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://erfahtech.github.io/gcf/login/
   - name: User
     description: Get Profile and CRUD Device
   - name: Log History
-    description: CRUD Log History
+    description: Insert, Get, and Delete History
 paths:
   /urse-signup:
     post:
