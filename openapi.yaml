@@ -79,6 +79,24 @@ paths:
             - write:apiKey
             - read:apiKey
         # - Bearer: []
+  /urse-getprofile:
+    get:
+      tags:
+        - user
+      summary: Get Profile User
+      description: Mendapatkan Profile Berdasarkan User Login
+      operationId: authService
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetResponseProfile"
+        "405":
+          description: Invalid input
+      security:
+        - Bearer: []
   /urse-insertdevices:
     post:
       tags:
@@ -314,6 +332,24 @@ components:
         message:
           type: string
           example: "History berhasil ditambahkan dengan nama: dan payload: "
+    GetResponseProfile:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 123456
+        email:
+          type: string
+          example: mail@gmail.com
+        password:
+          type: string
+          example: secret
+        phonenumber:
+          type: string
+          example: 628123456789
+        username:
+          type: string
+          example: erfah
     GetResponseDevice:
       type: object
       properties:
