@@ -17,14 +17,14 @@ servers:
   - url: https://asia-southeast2-urse-project.cloudfunctions.net/
 tags:
   - name: Auth
-    description: Auth to Access to API
+    description: Login, Register, and Reset Password
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://erfahtech.github.io/gcf/login/
   - name: User
-    description: Get Token and Authorize
+    description: Get Profile and CRUD Device
   - name: Log History
-    description: Get Token and Authorize
+    description: CRUD Log History
 paths:
   /urse-signup:
     post:
@@ -32,7 +32,7 @@ paths:
         - Auth
       summary: SingUp Data User
       description: Signup Data User
-      operationId: authService
+      operationId: signUpService
       requestBody:
         content:
           application/json:
@@ -54,7 +54,7 @@ paths:
         - Auth
       summary: Login get Token
       description: Login and Get User Token
-      operationId: authService
+      operationId: loginService
       requestBody:
         content:
           application/json:
@@ -80,7 +80,7 @@ paths:
         - Auth
       summary: Send OTP
       description: Send OTP to Email for Reset Password
-      operationId: authService
+      operationId: sendOTPService
       requestBody:
         content:
           application/json:
@@ -102,7 +102,7 @@ paths:
         - Auth
       summary: Verify OTP
       description: Verify OTP to Email for Reset Password
-      operationId: authService
+      operationId: verifyOTPService
       requestBody:
         content:
           application/json:
@@ -124,7 +124,7 @@ paths:
         - Auth
       summary: Reset Password
       description: Reset Password After Verify OTP
-      operationId: authService
+      operationId: resetPasswordService
       requestBody:
         content:
           application/json:
@@ -146,7 +146,7 @@ paths:
         - User
       summary: Get Profile User
       description: Mendapatkan Profile Berdasarkan User Login
-      operationId: authService
+      operationId: getProfileService
       responses:
         "200":
           description: successful operation
@@ -164,7 +164,7 @@ paths:
         - User
       summary: Insert Device User
       description: Menambah Device User
-      operationId: authService
+      operationId: insertDeviceService
       requestBody:
         content:
           application/json:
@@ -187,7 +187,7 @@ paths:
         - User
       summary: Get Device User
       description: Mendapatkan Device Berdasarkan User Login
-      operationId: authService
+      operationId: getDeviceService
       responses:
         "200":
           description: successful operation
@@ -211,7 +211,7 @@ paths:
           required: true
           description: Masukan Id Device.
       description: Memperbaharui Device Berdasarkan User Login
-      operationId: authService
+      operationId: updateDeviceService
       requestBody:
         content:
           application/json:
@@ -240,7 +240,7 @@ paths:
           required: true
           description: Masukan Id Device.
       description: Menghapus Device Berdasarkan User Login
-      operationId: authService
+      operationId: deleteDeviceService
       responses:
         "200":
           description: successful operation
@@ -258,7 +258,7 @@ paths:
         - Log History
       summary: Insert Log History
       description: Menambah Device User
-      operationId: authService
+      operationId: insertHistoryService
       requestBody:
         content:
           application/json:
@@ -281,7 +281,7 @@ paths:
         - Log History
       summary: Get Log History
       description: Mendapatkan History Berdasarkan User Login
-      operationId: authService
+      operationId: getHistoryService
       responses:
         "200":
           description: successful operation
@@ -299,7 +299,7 @@ paths:
         - Log History
       summary: Delete Log Hisory
       description: Menghapus Semua History Berdasarkan User Login
-      operationId: authService
+      operationId: deleteHistoryService
       responses:
         "200":
           description: successful operation
