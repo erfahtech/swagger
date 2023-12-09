@@ -19,12 +19,18 @@ tags:
   - name: Auth
     description: Login, SignUp, and Reset Password
     externalDocs:
-      description: Deskripsi dan Kode Program
-      url: https://erfahtech.github.io/gcf/login/
+      description: Deskripsi Endpoint
+      url: https://ursmartecosystem.my.id/gcf/Auth
   - name: User
     description: Get Profile and CRUD Device
+    externalDocs:
+      description: Deskripsi Endpoint
+      url: https://ursmartecosystem.my.id/gcf/User
   - name: Log History
     description: Insert, Get, and Delete History
+    externalDocs:
+      description: Deskripsi Endpoint
+      url: https://ursmartecosystem.my.id/gcf/History
 paths:
   /urse-signup:
     post:
